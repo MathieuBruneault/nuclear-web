@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import home from '@/components/home.vue'
 import about from '@/components/about.vue'
-import resources from '@/components/resources.vue'
+import links from '@/components/links.vue'
 import research from '@/components/research.vue'
 import people from '@/components/people.vue'
 import publications from '@/components/publications.vue'
@@ -29,9 +29,9 @@ export default new VueRouter({
             component: about
         },
         {
-            path: '/resources',
-            name: 'resources',
-            component: resources
+            path: '/links',
+            name: 'links',
+            component: links
         },
         {
             path: '/research',
