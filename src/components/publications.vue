@@ -5,14 +5,23 @@
         <h3>Publications </h3>
       </b-row>
     </b-container>
-    <b-container>
+    <div>
       <div v-for="article_year in articles_year" :key=article_year.year> 
-        <h3> {{article_year.year}} </h3>
-        <div v-for="article in article_year.articles" :key=article>
-          <p style="text-align:left;"> {{article}} </p>
-        </div>
+        <h3 class="year_title"> 
+          <b-container>
+            {{article_year.year}}
+          </b-container>
+        </h3>
+        <b-container v-for="article in article_year.articles" 
+                     :key=article
+                     @mouseover="article['isHovering'] = true" 
+                     @mouseleave="article['isHovering'] = false"
+                     :class="{ hovering: article['isHovering']}"
+                     fluid>
+          <b-container style="text-align:left;"> {{article}} </b-container>
+        </b-container>
       </div>
-    </b-container>
+    </div>
   </div>
 </template>
 
@@ -26,20 +35,24 @@ export default {
     return{
       articles: [
         {
-          text: 'Barrett, B. R., Navrátil, P., & Vary, J. P. (2013). Ab initio no core shell model. Progress in Particle and Nuclear Physics, 69, 131-181.',
-          year: '2013'
+          text: 'Stroberg, S. R., Holt, J. D., Schwenk, A., & Simonis, J. (2021). Ab initio limits of atomic nuclei. Physical Review Letters, 126(2), 022501.',
+          year: '2021',
+          isHovering: 'false'
         },
         {
           text: 'Article 2',
-          year: '2019'
+          year: '2019',
+          isHovering: 'false'
         },
         {
           text: 'Article 3',
-          year: '2019'
+          year: '2015',
+          isHovering: 'false'
         },
         {
-          text: 'Barrett, B. R., Navrátil, P., & Vary, J. P. (2013). Ab initio no core shell model. Progress in Particle and Nuclear Physics, 69, 131-181.',
-          year: '2015'
+          text: 'Stroberg, S. R., Holt, J. D., Schwenk, A., & Simonis, J. (2021). Ab initio limits of atomic nuclei. Physical Review Letters, 126(2), 022501.',
+          year: '2021',
+          isHovering: 'false'
         }
       ],
       articles_year: []
@@ -78,5 +91,11 @@ export default {
     text-align:left;
     margin-bottom: 30px;
     margin-top: 70px;
+  }
+  .year_title {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  }
+  .hovering{
+    color: red
   }
 </style>

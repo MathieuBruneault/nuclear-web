@@ -111,7 +111,7 @@ export default {
     color: white;
     margin: auto;
     padding-top: 20px;
-    padding-bottom: 120px;
+    padding-bottom: 30px;
   }
   #logos{
     margin-bottom: 20px;
